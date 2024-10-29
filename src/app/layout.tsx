@@ -10,7 +10,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
-      <body className={`${inter.className} min-h-screen bg-gray-50`}>
+      <body className={`${inter.className} min-h-screen bg-white`}>
         <div className="max-w-md mx-auto bg-white min-h-screen relative">
           {children}
         </div>
