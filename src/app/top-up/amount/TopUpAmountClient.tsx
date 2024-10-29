@@ -20,17 +20,52 @@ export default function TopUpAmountClient() {
   const method = searchParams.get("method");
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState("");
+  const [error, setError] = useState("");
+
+  const formatTitle = (method: string | null) => {
+    if (!method) return "";
+    return (
+      "Via " +
+      method
+        .split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ")
+    );
+  };
 
   const handleAmountClick = (amount: number) => {
     setSelectedAmount(amount);
-    setCustomAmount("");
+    setCustomAmount(amount.toString());
+    setError("");
   };
 
   const handleCustomAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, "");
     setCustomAmount(value);
     setSelectedAmount(null);
+
+    // Validasi minimal amount
+    if (value && parseInt(value) < 20000) {
+      setError("Minimum top up amount Rp 20.000");
+    } else {
+      setError("");
+    }
   };
+
+  const handleNext = () => {
+    const finalAmount = customAmount ? parseInt(customAmount) : 0;
+
+    if (finalAmount < 20000) {
+      setError("Minimum top up amount Rp 20.000");
+      return;
+    }
+
+    // Proceed with the transaction
+    console.log("Processing amount:", finalAmount);
+    // router.push(...) // Navigate to next page
+  };
+
+  const isValidAmount = customAmount && parseInt(customAmount) >= 20000;
 
   return (
     <main className="min-h-screen bg-white pb-6">
@@ -48,14 +83,7 @@ export default function TopUpAmountClient() {
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z" />
             </svg>
           </div>
-          <span className="text-lg font-medium">
-            Via{" "}
-            {method
-              ?.replace(/-/g, " ")
-              .split(" ")
-              .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-              .join(" ")}
-          </span>
+          <span className="text-lg font-medium">{formatTitle(method)}</span>
         </div>
 
         {/* Top Up Information */}
@@ -115,20 +143,23 @@ export default function TopUpAmountClient() {
           </div>
           <div className="flex items-center gap-1 text-gray-500">
             <AlertCircle className="w-4 h-4" />
-            <span className="text-sm">Minimum top up amount Rp 20.000</span>
+            <span
+              className={`text-sm ${error ? "text-red-500" : "text-gray-500"}`}
+            >
+              {error || "Minimum top up amount Rp 20.000"}
+            </span>
           </div>
         </div>
 
         {/* Next Button */}
         <button
+          onClick={handleNext}
           className={`w-full py-4 rounded-xl text-center transition-colors ${
-            selectedAmount || (customAmount && parseInt(customAmount) >= 20000)
+            isValidAmount
               ? "bg-red-500 text-white"
               : "bg-gray-100 text-gray-400"
           }`}
-          disabled={
-            !selectedAmount && (!customAmount || parseInt(customAmount) < 20000)
-          }
+          disabled={!isValidAmount}
         >
           Next
         </button>
