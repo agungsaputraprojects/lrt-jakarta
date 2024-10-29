@@ -19,7 +19,8 @@ export default function VerificationPage() {
 
   const handleOtpComplete = (otp: string) => {
     console.log("OTP Completed:", otp);
-    router.push("/register");
+    // router.push("/register");
+    router.push(`/register?phone=${phoneNumber}`);
   };
 
   const handleTimerComplete = () => {

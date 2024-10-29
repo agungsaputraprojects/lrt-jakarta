@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Header } from "@/components/ui/Header";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface FormData {
   phone: string;
@@ -32,9 +32,15 @@ interface TouchedFields {
 }
 
 export default function RegisterPage() {
+  const searchParams = useSearchParams();
+  const phoneFromParams = searchParams.get("phone") || "";
+
   const router = useRouter();
+  const handleBackClick = () => {
+    router.back();
+  };
   const [formData, setFormData] = useState<FormData>({
-    phone: "",
+    phone: phoneFromParams,
     name: "",
     birthDate: "",
     birthPlace: "",
@@ -156,7 +162,7 @@ export default function RegisterPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <Header title="LRT x JakOne Pay" />
+      <Header title="LRT x JakOne Pay" onBackClick={handleBackClick} />
 
       <div className="px-4 py-6 pt-20">
         <div className="flex justify-center mb-8">
@@ -173,12 +179,13 @@ export default function RegisterPage() {
           <Input
             name="phone"
             type="tel"
-            placeholder="Nomor telepon/handphone"
+            // placeholder="Nomor telepon/handphone"
             value={formData.phone}
             onChange={handleChange}
             onBlur={() => handleBlur("phone")}
             error={errors.phone}
-            className="bg-gray-50 border-0 h-12"
+            readOnly
+            className="bg-gray-50"
           />
 
           <Input

@@ -17,6 +17,7 @@ export default function Home() {
     }
 
     setError("");
+    // Kirim nomor telepon ke halaman verifikasi
     router.push(`/verification?phone=${phoneNumber}`);
   };
 
