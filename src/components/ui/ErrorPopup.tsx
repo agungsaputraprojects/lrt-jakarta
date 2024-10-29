@@ -20,8 +20,8 @@ export const ErrorPopup = ({
       <div className="fixed inset-0 bg-black/30" onClick={onClose} />
       <div className="bg-white rounded-3xl w-full max-w-sm p-6 relative z-10">
         <div className="text-center space-y-4">
-          <h3 className="text-lg font-medium">{title}</h3>
-          <p className="text-lg whitespace-pre-line">{message}</p>
+          <h3 className="text-lg font-medium text-black">{title}</h3>
+          <p className="text-lg whitespace-pre-line text-black">{message}</p>
           <button
             onClick={onClose}
             className="w-full bg-red-600 text-white py-3 px-6 rounded-xl mt-6 text-lg font-medium"
