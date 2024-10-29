@@ -48,7 +48,7 @@ export default function TopUpPage() {
           <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
             <CreditCard className="text-red-500 w-5 h-5" />
           </div>
-          <h2 className="text-lg font-medium">Top Up Methods</h2>
+          <h2 className="text-lg font-medium text-black">Top Up Methods</h2>
         </div>
 
         <div className="divide-y">

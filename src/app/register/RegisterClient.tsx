@@ -198,7 +198,7 @@ export default function RegisterPage() {
             onChange={handleChange}
             onBlur={() => handleBlur("birthDate")}
             error={errors.birthDate}
-            className="bg-gray-50 border-0 h-12 text-gray-500 text-black"
+            className="bg-gray-50 border-0 h-12 text-black"
           />
 
           <Input
