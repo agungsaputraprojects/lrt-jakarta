@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 
 interface TimerProps {
@@ -7,19 +9,25 @@ interface TimerProps {
 
 export const Timer = ({ initialSeconds, onComplete }: TimerProps) => {
   const [seconds, setSeconds] = useState(initialSeconds);
+  const [isActive, setIsActive] = useState(true);
 
   useEffect(() => {
-    if (seconds <= 0) {
-      onComplete?.();
-      return;
+    let interval: NodeJS.Timeout;
+
+    if (isActive && seconds > 0) {
+      interval = setInterval(() => {
+        setSeconds((prev) => {
+          if (prev <= 1) {
+            setIsActive(false);
+            onComplete?.();
+          }
+          return prev - 1;
+        });
+      }, 1000);
     }
 
-    const timer = setInterval(() => {
-      setSeconds((prev) => prev - 1);
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [seconds, onComplete]);
+    return () => clearInterval(interval);
+  }, [seconds, isActive, onComplete]);
 
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
