@@ -26,10 +26,9 @@ export const OtpInput = ({ length = 6, onComplete, value }: OtpInputProps) => {
       if (index < length - 1) {
         inputRefs.current[index + 1]?.focus();
       }
-      // Cek apakah semua input sudah terisi
       const pinString = newPin.join("");
       if (pinString.length === length && onComplete) {
-        onComplete(pinString); // Ini akan langsung trigger navigasi ke register
+        onComplete(pinString);
       }
     }
   };

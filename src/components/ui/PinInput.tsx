@@ -10,14 +10,12 @@ export const PinInput = ({ length = 6, onComplete, value }: PinInputProps) => {
   const [pin, setPin] = useState<string[]>(new Array(length).fill(""));
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
-  // Reset pin when value prop changes
   useEffect(() => {
     if (value !== undefined) {
       setPin(value ? value.split("") : new Array(length).fill(""));
     }
   }, [value, length]);
 
-  // Focus first input on mount
   useEffect(() => {
     inputRefs.current[0]?.focus();
   }, []);

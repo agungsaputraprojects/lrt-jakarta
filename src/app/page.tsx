@@ -17,13 +17,12 @@ export default function Home() {
     }
 
     setError("");
-    // Kirim nomor telepon ke halaman verifikasi
     router.push(`/verification?phone=${phoneNumber}`);
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPhoneNumber(e.target.value);
-    if (error) setError(""); // Clear error when user starts typing
+    if (error) setError("");
   };
 
   return (

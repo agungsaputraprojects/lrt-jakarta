@@ -25,7 +25,6 @@ export default function PinSetupPage() {
   const handleConfirmPinComplete = (value: string) => {
     setConfirmPin(value);
     if (value === pin) {
-      // Navigate to top-up page on successful PIN confirmation
       router.push("/top-up");
     } else {
       setConfirmPin("");
@@ -53,7 +52,6 @@ export default function PinSetupPage() {
       <Header title="LRT x JakOne Pay" onBackClick={handleBackClick} />
 
       {!showConfirmation ? (
-        // First PIN Setup Page
         <div className="px-4 py-6">
           <div className="flex justify-center mb-8">
             <Image
@@ -83,7 +81,6 @@ export default function PinSetupPage() {
           </div>
         </div>
       ) : (
-        // PIN Confirmation Page
         <div className="px-4 py-6">
           <div className="flex justify-center mb-8">
             <Image

@@ -44,7 +44,6 @@ export default function TopUpAmountClient() {
     setCustomAmount(value);
     setSelectedAmount(null);
 
-    // Validasi minimal amount
     if (value && parseInt(value) < 20000) {
       setError("Minimum top up amount Rp 20.000");
     } else {
@@ -60,9 +59,7 @@ export default function TopUpAmountClient() {
       return;
     }
 
-    // Proceed with the transaction
     console.log("Processing amount:", finalAmount);
-    // router.push(...) // Navigate to next page
   };
 
   const isValidAmount = customAmount && parseInt(customAmount) >= 20000;
