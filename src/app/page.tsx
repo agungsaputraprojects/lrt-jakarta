@@ -40,7 +40,7 @@ export default function Home() {
           />
         </div>
 
-        <h2 className="text-center text-xl mb-8">Selamat Datang</h2>
+        <h2 className="text-center text-xl mb-8 text-black">Selamat Datang</h2>
 
         <p className="text-sm text-gray-600 mb-4">
           Ekspresikan perjalananmu menggunakan LRT Pay

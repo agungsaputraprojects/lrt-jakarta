@@ -19,7 +19,7 @@ export const Header = ({
             <ArrowLeft className="w-6 h-6 text-gray-700" />
           </button>
         )}
-        <h1 className="text-lg font-medium">{title}</h1>
+        <h1 className="text-lg font-medium text-black">{title}</h1>
       </div>
     </header>
   );
