@@ -22,7 +22,7 @@ export const TopUpMethodItem = ({
         {icon}
       </div>
       <div className="flex-1 text-left">
-        <h3 className="font-medium">{title}</h3>
+        <h3 className="font-medium text-black">{title}</h3>
         <p className="text-sm text-gray-600">{description}</p>
       </div>
       <ChevronRight className="text-gray-400" />

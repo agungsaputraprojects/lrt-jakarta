@@ -60,7 +60,7 @@ export const OtpInput = ({ length = 6, onComplete, value }: OtpInputProps) => {
           value={pin[index]}
           onChange={(e) => handleChange(e.target, index)}
           onKeyDown={(e) => handleKeyDown(e, index)}
-          className="w-12 h-12 border-b-2 border-gray-300 text-center text-xl focus:border-red-500 focus:outline-none"
+          className="w-12 text-black h-12 border-b-2 border-gray-300 text-center text-xl focus:border-red-500 focus:outline-none"
         />
       ))}
     </div>

@@ -63,7 +63,9 @@ export default function PinSetupPage() {
             />
           </div>
 
-          <h2 className="text-center text-xl mb-8">Buat PIN kamu!</h2>
+          <h2 className="text-center text-black text-xl mb-8">
+            Buat PIN kamu!
+          </h2>
 
           <PinInput length={6} onComplete={handlePinComplete} />
 
@@ -92,7 +94,9 @@ export default function PinSetupPage() {
             />
           </div>
 
-          <h2 className="text-center text-xl mb-8">Konfirmasi PIN kamu!</h2>
+          <h2 className="text-center text-black text-xl mb-8">
+            Konfirmasi PIN kamu!
+          </h2>
 
           <PinInput
             key={resetKey}

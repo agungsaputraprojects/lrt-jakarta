@@ -67,7 +67,7 @@ export const PinInput = ({ length = 6, onComplete, value }: PinInputProps) => {
           value={pin[index]}
           onChange={(e) => handleChange(e.target, index)}
           onKeyDown={(e) => handleKeyDown(e, index)}
-          className="w-12 h-12 border border-red-500 rounded text-center text-xl focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-500"
+          className="w-12 h-12 text-black border border-red-500 rounded text-center text-xl focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-500"
         />
       ))}
     </div>

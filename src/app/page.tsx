@@ -53,7 +53,7 @@ export default function Home() {
               value={phoneNumber}
               onChange={handlePhoneChange}
               placeholder="Nomor Telepon"
-              className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 ${
+              className={`w-full text-black px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 ${
                 error ? "border-red-500" : "border-gray-300"
               }`}
             />
